@@ -18,6 +18,6 @@ The repository is organised into two branches: the `main` branch, with the exerc
 Please do not push to the `main` branch (default branch). Collaborative work between students should be kept to the  students` branch.
 
 ## Resources
-* ([https://discord.gg/kdWzpD9d6k](Discord server)) (instant messaging)
-* ([https://jupyter.org/install.html](How to install Jupyter))
-* ([https://colab.research.google.com/notebooks/welcome.ipynb](Using Jupyter online with Google))
+* ([Discord server](https://discord.gg/kdWzpD9d6k)) (instant messaging)
+* ([How to install Jupyter](https://jupyter.org/install.html))
+* ([Using Jupyter online with Google](https://colab.research.google.com/notebooks/welcome.ipynb))
