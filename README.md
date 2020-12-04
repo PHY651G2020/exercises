@@ -16,3 +16,8 @@ The repository is organised into two branches: the `main` branch, with the exerc
 * `git push origin students`
 
 Please do not push to the `main` branch (default branch). Collaborative work between students should be kept to the  students` branch.
+
+## Resources
+* ([https://discord.gg/kdWzpD9d6k](Discord server)) (instant messaging)
+* ([https://jupyter.org/install.html](How to install Jupyter))
+* ([https://colab.research.google.com/notebooks/welcome.ipynb](Using Jupyter online with Google))
