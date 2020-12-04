@@ -15,3 +15,4 @@ The repository is organised into two branches: the `main` branch, with the exerc
 * `git commit someFile_myname`
 * `git push origin students`
 
+Please do not push to the `main` branch (default branch). Collaborative work between students should be kept to the  students` branch.
