@@ -1,7 +1,7 @@
 # exercises
-A repository where to share answers to the exercises and hand-on sessions for the 2020-2021 PHY651G class [[https://moodle.polytechnique.fr/course/view.php?id=11113]["Methods of statistical analysis and simulation"]]
+A repository where to share answers to the exercises and hand-on sessions for the 2020-2021 PHY651G class (["Methods of statistical analysis and simulation"](https://moodle.polytechnique.fr/course/view.php?id=11113))
 
-NB: as [[https://moodle.polytechnique.fr/mod/page/view.php?id=132496][stated in Moodle]], weekly exercises and hands-on sessions are NOT graded: they are there only to learn and train.
+NB: as ([stated in Moodle](https://moodle.polytechnique.fr/mod/page/view.php?id=132496)), weekly exercises and hands-on sessions are NOT graded: they are there only to learn and train.
 
 ## How to join?
 Send an email to emilien.chapon@cern.ch with your github login, asking to be added to the team.
