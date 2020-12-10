@@ -10,21 +10,30 @@ import numpy as np
 
 # 1. MLE
 def lnL(xx,yy,a,b):
-    """function returning -2*ln(L)"""
-    ... #TODO
+    s = 0
+    for i in range(0,len(xx)):
+        s = s + (yy[i]-a-b*xx[i])**2
+    return s
 
 def sl_MLE(xx,yy):
-    """compute the MLE for the straight line (sl) parameters"""
-    a = ... #TODO
-    b = ... #TODO
+    xy = xx * yy
+    xx2 = xx * xx
+    mean_x = np.mean(xx)
+    mean_y = np.mean(yy)
+    mean_x2 = np.mean(xx2)
+    mean_xy = np.mean(xy)
+    b = (mean_xy - mean_x*mean_y) / (mean_x2 - mean_x**2)
+    a = mean_y - b*mean_x
     return (a,b)
 
 def sl_MLE_var(xx,yy):
-    """compute the covariance matrix of the MLE"""
-    V11 = ... #TODO
-    V12 = ... #TODO
-    V21 = ... #TODO
-    V22 = ... #TODO
+    xx2 = xx * xx
+    
+    A = 1/(len(xx)*(np.mean(xx2)-np.mean(xx)**2))
+    V11 = A*np.mean(xx2)
+    V12 = -A*np.mean(xx)
+    V21 = V12
+    V22 = A
     return ((V11,V12),(V21,V22))
 
 # position of the detector hits
@@ -203,3 +212,65 @@ ax.set_ylabel('$-2 \Delta \ln(\mathcal{L})$')
 ax.legend()
 plt.show()
 
+
+# ## 4. Data combination
+# 
+# Up to now, we were considering the two parameters $(a,b)$, either for both tracking stations together, or one tracking station at a time. In this question, we focus on $a$ alone, and want to combine the measurements from the two tracking stations, using the BLUE method.
+# 
+# For this, we need the covariance matrix not between $a$ and $b$, but between the tracking stations 1 and 2, for $a$ alone. 
+# 
+# $$W = \text{cov}(\hat{a}_1,\hat{a}_2) = \begin{pmatrix}
+# (\sigma_1^a)^2 & \sigma_1^a \sigma_2^a \\
+# \sigma_1^a \sigma_2^a & (\sigma_2^a)^2
+# \end{pmatrix}$$
+# 
+# How shall we proceed?
+
+# In[ ]:
+
+
+# 4. BLUE
+# we go back to the first likelihood, without constraint on b
+def lnL(xx,yy,a,b):
+    s = 0
+    for i in range(0,len(xx)):
+        s = s + (yy[i]-a-b*xx[i])**2
+    return s
+
+def sl_MLE(xx,yy):
+    xy = []
+    xx2 = []
+    for i in range(0,len(xx)):
+        xy.append( xx[i]*yy[i])
+        xx2.append(xx[i]*xx[i])
+    mean_x = np.mean(xx)
+    mean_y = np.mean(yy)
+    mean_x2 = np.mean(xx2)
+    mean_xy = np.mean(xy)
+    b = (mean_xy - mean_x*mean_y) / (mean_x2 - mean_x**2)
+    a = mean_y - b*mean_x
+    return (a,b)
+
+# reset the MLEs
+mle12 = sl_MLE(xx12,yy12)
+mle1 = sl_MLE(xx1,yy1)
+mle2 = sl_MLE(xx2,yy2)
+
+# also the covariance matrices
+V12 = sl_MLE_var(xx12,yy12)
+V1 = sl_MLE_var(xx1,yy1)
+V2 = sl_MLE_var(xx2,yy2)
+
+# apply the BLUE method
+# you need to find out how to compute W, and deduce the BLUE weights from it
+ablue = ...
+
+print ("a1 = ", mle1[0])
+print ("a2 = ", mle2[0])
+print ("BLUE combination of a: ", ablue)
+print ("MLE for both tracking stations for a: ", mle12[0])
+
+
+# Observations and comments on the results:
+# 
+# (Enter your comments here)
